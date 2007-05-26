@@ -1,6 +1,6 @@
 =head1 NAME
 
-Spreadsheet::Write - Simplified writer for CSV or XLS files
+Spreadsheet::Write - Simplified writer for CSV or XLS (MS Excel) files
 
 =head1 SYNOPSIS
 
@@ -16,8 +16,6 @@ Spreadsheet::Write - Simplified writer for CSV or XLS files
             money   => '($#,##0_);($#,##0)',
         },
     );
-
-    die $h->error() if $h->error;
 
     $h->addrow('foo',{
         content         => 'bar',
@@ -48,7 +46,9 @@ Spreadsheet::Write - Simplified writer for CSV or XLS files
 
 =head1 DESCRIPTION
 
-C<Spreadsheet::Write> writes files in csv or xls formats.
+C<Spreadsheet::Write> writes files in CSV or XLS (Microsoft Excel)
+formats. It is especially suitable for building various dumps and
+reports where rows are built in sequence, one after another.
 
 =head1 METHODS
 
@@ -67,7 +67,7 @@ use Spreadsheet::WriteExcel;
 
 BEGIN {
   use vars       qw($VERSION);
-  $VERSION =     '0.01';
+  $VERSION =     '0.03';
 }
 
 sub version {
@@ -200,6 +200,24 @@ sub _open($) {
 
 ###############################################################################
 
+sub _format_cache($$) {
+    my $self=shift;
+    my $format=shift;
+    
+    my $cache_key='';
+    foreach my $key (sort keys %$format) {
+        $cache_key.=$key.$format->{$key};
+    }
+
+    if(exists($self->{'_FORMAT_CACHE'}->{$cache_key})) {
+        return $self->{'_FORMAT_CACHE'}->{$cache_key};
+    }
+
+    return $self->{'_FORMAT_CACHE'}->{$cache_key}=$self->{'_WORKBOOK'}->add_format(%$format);
+}
+
+###############################################################################
+
 =head2 addrow(arg1,arg2,...)
 
 Adds a row into the spreadsheet. Takes arbitrary number of
@@ -219,6 +237,7 @@ parameters may be passed:
     font_size       size of font
     align           alignment
     valign          vertical alignment
+    width           column width, excel units (only makes sense once per column)
 
 Styles can be used to assign default values for any of these formatting
 parameters thus allowing easy global changes. Other parameters specified
@@ -248,6 +267,18 @@ If you want to store text that looks like a number you might want to use
 { type => 'string', format => '@' } arguments. By default the type detection is automatic,
 as done by for instance L<Spreadsheet::WriteExcel> write() method.
 
+It is also possible to supply an array reference in the 'content'
+parameter of the extended format. It means to use the same formatting
+for as many cells as there are elements in this array. Useful for
+creating header rows. For instance, the above example can be rewritten
+as:
+
+    $sp->addrow(
+        { style => 'header',
+          content => [ 'First Name','Last Name','Age' ],
+        }
+    );
+
 For CSV format all extra arguments are safely ignored.
 
 =cut
@@ -263,8 +294,17 @@ sub addrow (@) {
 
     foreach my $part (@$parts) {
         if(ref($part) && (ref($part) eq 'HASH')) {
-            push(@texts,$part->{'content'});
-            push(@props,$part);
+            my $content=$part->{'content'};
+            if(ref($content) && (ref($content) eq 'ARRAY')) {
+                foreach my $elt (@$content) {
+                    push(@texts,$elt);
+                    push(@props,$part);
+                }
+            }
+            else {
+                push(@texts,$part->{'content'});
+                push(@props,$part);
+            }
         }
         else {
             push(@texts,$part);
@@ -351,10 +391,14 @@ sub addrow (@) {
                 if($props->{'format'}) {
                     $format{'num_format'}=$props->{'format'};
                 }
+                if($props->{'width'}) {
+                    $worksheet->set_column($col,$col,$props->{'width'});
+                }
             }
 
             my @params=($row,$col++,$value);
-            push(@params,$workbook->add_format(%format)) if keys %format;
+
+            push(@params,$self->_format_cache(\%format)) if keys %format;
 
             my $type=($props ? $props->{'type'} : '') || 'auto';
             if($type eq 'auto')         { $worksheet->write(@params); }

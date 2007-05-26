@@ -7,3 +7,14 @@ WriteMakefile(
         'Text::CSV'                 => '0.01',
     },
 );
+
+sub MY::postamble
+{ return <<EOT;
+
+config::	README
+
+README: lib/Spreadsheet/Write.pm
+	pod2text -w76 lib/Spreadsheet/Write.pm > README
+
+EOT
+}
