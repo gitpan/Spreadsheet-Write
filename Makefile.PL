@@ -1,20 +1,44 @@
-use ExtUtils::MakeMaker;
-WriteMakefile(
-    'NAME'          => 'Spreadsheet::Write',
-    'VERSION_FROM'  => 'lib/Spreadsheet/Write.pm',
-    'PREREQ_PM'     => {
-        'Spreadsheet::WriteExcel'   => '2.15',
-        'Text::CSV'                 => '0.01',
-    },
-);
+use strict;
+use warnings;
 
-sub MY::postamble
-{ return <<EOT;
+use inc::Module::Install;
 
-config::	README
+my $dist = 'Spreadsheet-Write';
+my $fn   = "lib/$dist.pm"; $fn =~ s#-#/#g;
 
-README: lib/Spreadsheet/Write.pm
-	pod2text -w76 lib/Spreadsheet/Write.pm > README
+name                $dist;
+perl_version_from   $fn;
+version_from        $fn;
+abstract_from       $fn;
+readme_from         $fn;
+author              'Toby Inkster <tobyink@cpan.org>';
+license             'perl';
 
-EOT
-}
+recommends          'Archive::Zip'            => 0;
+requires            'common::sense'           => 0;
+recommends          'DateTime'                => 0;
+requires            'Encode'                  => 0;
+recommends          'HTML::HTML5::Writer'     => 0;
+requires            'IO::File'                => 0;
+recommends          'Spreadsheet::WriteExcel' => 0;
+test_requires       'Test::More'              => '0.61';
+requires            'Text::CSV'               => 0;
+recommends          'XML::LibXML'             => 0;
+
+# install_script 'fingerw';
+
+resources(
+	'homepage'   => "http://search.cpan.org/dist/$dist/",
+	'repository' => "http://goddamn.co.uk/viewvc/perlmods/$dist/",
+	'bugtracker' => "http://rt.cpan.org/Dist/Display.html?Queue=$dist",
+	);
+	
+write_doap_changes;
+write_doap_changes_xml;
+
+include 'Test::Signature';
+auto_install;
+WriteAll(
+	'meta' => 1,
+	'sign' => 1,
+	);

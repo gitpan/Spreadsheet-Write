@@ -1,5 +1,5 @@
 NAME
-    Spreadsheet::Write - Simplified writer for CSV or XLS (MS Excel) files
+    Spreadsheet::Write - simplified writer for spreadsheet files
 
 SYNOPSIS
         # EXCEL spreadsheet
@@ -43,9 +43,11 @@ SYNOPSIS
         $h->addrow('foo','bar');
 
 DESCRIPTION
-    "Spreadsheet::Write" writes files in CSV or XLS (Microsoft Excel)
-    formats. It is especially suitable for building various dumps and
-    reports where rows are built in sequence, one after another.
+    "Spreadsheet::Write" writes files in CSV, Microsoft Excel, HTML and
+    OpenDocument formats. It is especially suitable for building various
+    dumps and reports where rows are built in sequence, one after another.
+
+    It is not especially suitable for modifying existing files.
 
 METHODS
   new()
@@ -61,9 +63,10 @@ METHODS
 
         file        filename of the new spreadsheet (mandatory)
         encoding    encoding of output file (optional, csv format only)
-        format      format of spreadsheet - 'csv', 'xls', or 'auto' (default).
-        sheet       Sheet name (optional, xls format only)
+        format      format of spreadsheet - 'csv', 'xls', 'html', 'ods' or 'auto' (default).
+        sheet       Sheet name (optional, not supported by some formats)
         styles      Defines cell formatting shortcuts (optional)
+        failsafe    Boolean - if true, falls back to CSV in emergencies
 
     If file format is 'auto' (or omitted), the format is guessed from the
     filename extention. If impossible to guess the format defaults to 'csv'.
@@ -80,7 +83,7 @@ METHODS
         format          number format (see Spreadsheet::WriteExcel for details)
         font_weight     weight of font. Only valid value is 'bold'
         font_style      style of font. Only valid value is 'italic'
-        font_decoration 'underline' or 'strikeout'
+        font_decoration 'underline' or 'strikeout' (or both, space separated)
         font_face       font of column; default is 'Arial'
         font_color      color of font (see Spreadsheet::WriteExcel for color values)
         font_size       size of font
@@ -130,6 +133,14 @@ METHODS
 
     For CSV format all extra arguments are safely ignored.
 
+  addrows([Cell_1A,Cell_1B,...],[Cell_2A,Cell_3B,...],...)
+    Shortcut for adding multiple rows.
+
+    Each argument is an arrayref representing a row.
+
+    Any argument that is not a reference is taken to be the title of a new
+    worksheet.
+
   addsheet(name)
     Adds a new sheet into the document and makes it active. Subsequent
     addrow() calls will add rows to that new sheet.
@@ -137,10 +148,22 @@ METHODS
     For CSV format this call is NOT ignored, but produces a fatal error
     currently.
 
-  freeze($row, $col, $top_row, $left_col))
+  freeze($row, $col, $top_row, $left_col)
     Sets a freeze-pane at the given position, equivalent to
-    Spreadsheet::WriteExcel->freeze_panes(). Ignored for CSV files.
+    Spreadsheet::WriteExcel->freeze_panes(). Only implemented for Excel
+    spreadsheets so far.
+
+  close()
+    Saves the spreadsheet to disk (some of the modules save incrementally
+    anyway) and closes the file. Calling this explicitly is usually
+    un-necessary, as the Perl garbage collector will do the job eventually
+    anyway. Once a spreadsheet is closed, calls to addrow() will fail.
 
 AUTHORS
-    Nick Eremeev <nick.eremeev@gmail.com> http://ejelta.com/
+    Versions 0.01 to 0.03 by Nick Eremeev <nick.eremeev@gmail.com>
+    <http://ejelta.com/>.
+
+    Toby Inkster <tobyink@cpan.org> has taken over maintenance of this
+    package, but attempts to contact the original author have so far gone
+    unreplied.
 

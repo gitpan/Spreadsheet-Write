@@ -1,0 +1,101 @@
+#############################################################
+
+@prefix :        <http://usefulinc.com/ns/doap#> .
+@prefix dcs:     <http://ontologi.es/doap-changeset#> .
+@prefix dc:      <http://purl.org/dc/terms/> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix my:      <http://purl.org/NET/cpan-uri/dist/Spreadsheet-Write/> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix toby:    <http://tobyinkster.co.uk/#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+#############################################################
+
+<>
+
+	dc:title         "Changes" ;
+	dc:description   "Revision history for Perl extension Spreadsheet::Write."@en ;
+	dc:subject       my:project ;
+	dc:creator       toby:i .
+
+#############################################################
+
+my:v_0-01
+
+	a               :Version ;
+	dc:issued       "2007-05-04"^^xsd:date ;
+	:revision       "0.01"^^xsd:string ;
+	:file-release   <http://backpan.cpan.org/authors/id/A/AM/AMALTSEV/Spreadsheet-Write-0.01.tar.gz> ;
+	rdfs:label      "Original release"@en .
+
+my:v_0-02
+
+	a               :Version ;
+	dc:issued       "2007-05-07"^^xsd:date ;
+	:revision       "0.02"^^xsd:string ;
+	:file-release   <http://backpan.cpan.org/authors/id/A/AM/AMALTSEV/Spreadsheet-Write-0.02.tar.gz> ;
+	dcs:changeset [
+		dcs:versus my:v_0-01 ;
+		dcs:item [ rdfs:label "'width' added to set column widths"@en ]
+		] .
+
+my:v_0-03
+
+	a               :Version ;
+	dc:issued       "2007-05-25"^^xsd:date ;
+	:revision       "0.03"^^xsd:string ;
+	:file-release   <http://backpan.cpan.org/authors/id/A/AM/AMALTSEV/Spreadsheet-Write-0.03.tar.gz> ;
+	dcs:changeset [
+		dcs:versus my:v_0-02 ;
+		dcs:item [ rdfs:label "Formats are cached to improve performance in Excel"@en ] ;
+		dcs:item [ rdfs:label "'content' in extended cell info blocks can be an array to simplify headers creation and such."@en ]
+		] .
+
+my:v_0-100
+
+	a               :Version ;
+	dc:issued       "2010-06-12"^^xsd:date ;
+	:revision       "0.100"^^xsd:string ;
+	:file-release   <http://backpan.cpan.org/authors/id/T/TO/TOBYINK/Spreadsheet-Write-0.100.tar.gz> ;
+	rdfs:label      "Reboot"@en ;
+	dcs:changeset [
+		dcs:versus my:v_0-03 ;
+		dcs:item [ rdfs:label "Split CSV and Excel outputs into spearate files"@en ] ;
+		dcs:item [ rdfs:label "HTML and XHTML output"@en ; a dcs:Addition ] ;
+		dcs:item [ rdfs:label "OpenDocument (OpenOffice.org) output"@en ; a dcs:Addition ] ;
+		dcs:item [ rdfs:label "Toby Inkster has taken over maintenance"@en ] ;
+		dcs:item [ rdfs:label "addrows() shortcut for adding multiple rows" ; a dcs:Addition ] ;
+		] .
+
+#############################################################
+
+my:project
+
+	a               :Project ;
+	:name           "Spreadsheet-Write" ;
+	:shortdesc      "simplified writer for spreadsheet files"@en ;
+	:programming-language  "Perl" ;
+	:homepage       <http://search.cpan.org/dist/Spreadsheet-Write/> ;
+	:download-page  <http://search.cpan.org/dist/Spreadsheet-Write/> ;
+	:bug-database   <http://rt.cpan.org/Dist/Display.html?Queue=Spreadsheet-Write> ;
+	:repository     [ a :SVNRepository ; :browse <http://goddamn.co.uk/viewvc/perlmods/Spreadsheet-Write/> ] ;
+	:maintainer     toby:i ;
+	:developer      toby:i , <http://purl.org/NET/cpan-uri/person/amaltsev> ;
+	:documenter     <http://purl.org/NET/cpan-uri/person/amaltsev> ;
+	:tester         toby:i ;
+	:created        "2010-06-11"^^xsd:date ;
+	:license        <http://dev.perl.org/licenses/> ;
+	:release        my:v_0-01 , my:v_0-02 , my:v_0-03 , my:v_0-100 .
+
+#############################################################
+
+toby:i
+
+	a               foaf:Person ;
+	foaf:name       "Toby Inkster" ;
+	foaf:homepage   <http://tobyinkster.co.uk/> ;
+	foaf:page       <http://search.cpan.org/~tobyink/> ;
+	foaf:mbox       <mailto:tobyink@cpan.org> ;
+	<http://www.w3.org/2002/07/owl#sameAs> <http://purl.org/NET/cpan-uri/person/tobyink> .
+
+#############################################################
