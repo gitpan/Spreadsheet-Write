@@ -29,6 +29,7 @@ inc/Test/Signature.pm
 lib/Spreadsheet/Write/CSV.pm
 lib/Spreadsheet/Write/Excel.pm
 lib/Spreadsheet/Write/HTML.pm
+lib/Spreadsheet/Write/JSON.pm
 lib/Spreadsheet/Write/OpenDocument.pm
 lib/Spreadsheet/Write/OpenDocumentXML.pm
 lib/Spreadsheet/Write.pm

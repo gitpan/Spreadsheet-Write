@@ -56,13 +56,23 @@
     <file-release rdf:resource="http://backpan.cpan.org/authors/id/A/AM/AMALTSEV/Spreadsheet-Write-0.03.tar.gz"/>
     <revision rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.03</revision>
   </Version>
-  <Version rdf:about="http://purl.org/NET/cpan-uri/dist/Spreadsheet-Write/v_0-100">
+  <Version rdf:about="http://purl.org/NET/cpan-uri/dist/Spreadsheet-Write/v_0-101_01">
     <dcs:changeset>
       <rdf:Description>
         <dcs:item>
           <dcs:Addition>
+            <rdfs:label xml:lang="en">OpenDocument (OpenOffice.org) output</rdfs:label>
+          </dcs:Addition>
+        </dcs:item>
+        <dcs:item>
+          <dcs:Addition>
             <rdfs:label>addrows() shortcut for adding multiple rows</rdfs:label>
           </dcs:Addition>
+        </dcs:item>
+        <dcs:item>
+          <rdf:Description>
+            <rdfs:label xml:lang="en">Toby Inkster has taken over maintenance</rdfs:label>
+          </rdf:Description>
         </dcs:item>
         <dcs:item>
           <rdf:Description>
@@ -76,25 +86,19 @@
         </dcs:item>
         <dcs:item>
           <dcs:Addition>
-            <rdfs:label xml:lang="en">OpenDocument (OpenOffice.org) output</rdfs:label>
+            <rdfs:label xml:lang="en">JSON output</rdfs:label>
           </dcs:Addition>
-        </dcs:item>
-        <dcs:item>
-          <rdf:Description>
-            <rdfs:label xml:lang="en">Toby Inkster has taken over maintenance</rdfs:label>
-          </rdf:Description>
         </dcs:item>
         <dcs:versus rdf:resource="http://purl.org/NET/cpan-uri/dist/Spreadsheet-Write/v_0-03"/>
       </rdf:Description>
     </dcs:changeset>
-    <dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-06-12</dc:issued>
-    <file-release rdf:resource="http://backpan.cpan.org/authors/id/T/TO/TOBYINK/Spreadsheet-Write-0.100.tar.gz"/>
-    <revision rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.100</revision>
+    <dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-06-19</dc:issued>
+    <file-release rdf:resource="http://backpan.cpan.org/authors/id/T/TO/TOBYINK/Spreadsheet-Write-0.101_01.tar.gz"/>
+    <revision rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.101_01</revision>
     <rdfs:label xml:lang="en">Reboot</rdfs:label>
   </Version>
   <Project rdf:about="http://purl.org/NET/cpan-uri/dist/Spreadsheet-Write/project">
     <bug-database rdf:resource="http://rt.cpan.org/Dist/Display.html?Queue=Spreadsheet-Write"/>
-    <created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-06-11</created>
     <developer rdf:resource="http://purl.org/NET/cpan-uri/person/amaltsev"/>
     <developer rdf:resource="http://tobyinkster.co.uk/#i"/>
     <documenter rdf:resource="http://purl.org/NET/cpan-uri/person/amaltsev"/>
@@ -107,7 +111,7 @@
     <release rdf:resource="http://purl.org/NET/cpan-uri/dist/Spreadsheet-Write/v_0-01"/>
     <release rdf:resource="http://purl.org/NET/cpan-uri/dist/Spreadsheet-Write/v_0-02"/>
     <release rdf:resource="http://purl.org/NET/cpan-uri/dist/Spreadsheet-Write/v_0-03"/>
-    <release rdf:resource="http://purl.org/NET/cpan-uri/dist/Spreadsheet-Write/v_0-100"/>
+    <release rdf:resource="http://purl.org/NET/cpan-uri/dist/Spreadsheet-Write/v_0-101_01"/>
     <repository>
       <SVNRepository>
         <browse rdf:resource="http://goddamn.co.uk/viewvc/perlmods/Spreadsheet-Write/"/>

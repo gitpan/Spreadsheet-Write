@@ -1,6 +1,6 @@
 package Spreadsheet::Write::OpenDocumentXML;
 
-our $VERSION = '0.100';
+our $VERSION = '0.101_01';
 
 use 5.008;
 use base qw'Spreadsheet::Write';

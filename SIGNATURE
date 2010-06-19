@@ -14,14 +14,14 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 fb59f9181b550dd21da9ccdb52e3f776c8643c18 Changes
-SHA1 ae97ee9f6b5f97d07d43b465df7e7e6619481c66 Changes.ttl
-SHA1 27360bbe261a18bca8234cf6f27a97c99adc7955 Changes.xml
-SHA1 71df02fe047c79df4afd592fc10e0a571a9a6735 MANIFEST
+SHA1 189d38ae35462fdc6d7541fca8766ddc54775c0a Changes
+SHA1 f991f584609f8f60484922b41fbaaa67cd69da9f Changes.ttl
+SHA1 b9c46a645ea90efa393e84f03113fad42d7132cb Changes.xml
+SHA1 3de3c5a12ee694d839db3ba7065602a7eabb3e22 MANIFEST
 SHA1 354096507daf87ed4425cbff4f7aba6cf5bae921 MANIFEST.SKIP
-SHA1 c16408be0faa42fea922b8facba4d9f91b2a117d META.yml
-SHA1 f6e0cc71a481f616d602793e40535dee7c169046 Makefile.PL
-SHA1 fb96502474be84f0f36d0d2524eb74aac713057f README
+SHA1 570fd7f477142362bcc63e6f64207885cff883a5 META.yml
+SHA1 b8ea552409d5543b1cc6a9da28466f4757a9ef00 Makefile.PL
+SHA1 c6f818d16757b758c50ea3eef3490b92e92fb884 README
 SHA1 8842ca38ce27ccf75e1ce8f5dfb93fa62d933b2e inc/Module/AutoInstall.pm
 SHA1 1ebec4119486a032a5612a403e8d7b7be973e938 inc/Module/Install.pm
 SHA1 bec3c7f9af6e1a3cb4d143249956c98af30f0552 inc/Module/Install/AutoInstall.pm
@@ -36,19 +36,20 @@ SHA1 a615bb050ca0b2d79bfa0224addcb83019a53b09 inc/Module/Install/ReadmeFromPod.p
 SHA1 5c25f1104c0038041e3b93e0660c39171e4caf2b inc/Module/Install/Win32.pm
 SHA1 94d47349c803c4bd2a9230d25e4db0b6aaf1acd8 inc/Module/Install/WriteAll.pm
 SHA1 1e6399a0585817abef500c34fce676fb9b0545f0 inc/Test/Signature.pm
-SHA1 81e6135415a1291202f991c2d1f3b885237a9c02 lib/Spreadsheet/Write.pm
-SHA1 afdcf50eb3fe6cd53fa6a65be705389d0fbfcf04 lib/Spreadsheet/Write/CSV.pm
-SHA1 e771303e5a1bef1bba9dae0fe6370e42434e3ddf lib/Spreadsheet/Write/Excel.pm
-SHA1 2dd815b85f4bd3998288a288696191e2a05a899c lib/Spreadsheet/Write/HTML.pm
-SHA1 c68e62217b6947a2c7a584b19d4c47f5cdc9e273 lib/Spreadsheet/Write/OpenDocument.pm
-SHA1 08c3b293ce415b5b9b2c07e50fceaef24333a6da lib/Spreadsheet/Write/OpenDocumentXML.pm
-SHA1 3a601dd56c309d920ab18de731541345b6b2f0a1 lib/Spreadsheet/Write/XHTML.pm
+SHA1 2e73c0d2832625056696c5f94804ca8f1beae385 lib/Spreadsheet/Write.pm
+SHA1 2af1f828f9ef4ec0ac979972e31514f2143f9130 lib/Spreadsheet/Write/CSV.pm
+SHA1 d5e3bfce67a7445e4b48352abfeed35b028f42e9 lib/Spreadsheet/Write/Excel.pm
+SHA1 bf84d610d17968e599fbe449054424fa77c23422 lib/Spreadsheet/Write/HTML.pm
+SHA1 b7bab3b9d06a1d733a27a7b29ad347a34d446a86 lib/Spreadsheet/Write/JSON.pm
+SHA1 e33e2a71b335f49e5e4f3fa55e1acf5795885543 lib/Spreadsheet/Write/OpenDocument.pm
+SHA1 e5ee24cfe65851dc5cd51e70658fdff4414a110b lib/Spreadsheet/Write/OpenDocumentXML.pm
+SHA1 3103e377c731659f6cf4c9f77d8203b0c26e009f lib/Spreadsheet/Write/XHTML.pm
 SHA1 bb128dce2db8ad397dbeb957d79d084cc5d2391a t/00sig.t
 SHA1 8e4347cca6a96afa8f5a5eaef53f32737b58ea73 t/01basic.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.10 (GNU/Linux)
 
-iEYEARECAAYFAkwY3iYACgkQzr+BKGoqfTmIlACgmQZ5pxsT+qdHv9pArdi3kAXU
-VJ0AnjGjJ41omaezktSa+0fuQtLgmqUh
-=Edso
+iEYEARECAAYFAkwdPBsACgkQzr+BKGoqfTnRlACePzvfhp1nblcf1m+ELjuGfIhk
+UOUAn0vIZ8llMK2Z7LIs++eeJRgQcxz/
+=VKY/
 -----END PGP SIGNATURE-----

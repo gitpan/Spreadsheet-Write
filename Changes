@@ -5,17 +5,17 @@
 Spreadsheet-Write
 =================
 
-Created:      2010-06-11
 Home page:    <http://search.cpan.org/dist/Spreadsheet-Write/>
 Bug tracker:  <http://rt.cpan.org/Dist/Display.html?Queue=Spreadsheet-Write>
 Maintainer:   Toby Inkster <mailto:tobyink@cpan.org>
 
-0.100 [2010-06-12] # Reboot
- - Toby Inkster has taken over maintenance
- - (Addition) addrows() shortcut for adding multiple rows
+0.101_01 [2010-06-19] # Reboot
  - (Addition) HTML and XHTML output
- - (Addition) OpenDocument (OpenOffice.org) output
+ - Toby Inkster has taken over maintenance
  - Split CSV and Excel outputs into spearate files
+ - (Addition) JSON output
+ - (Addition) OpenDocument (OpenOffice.org) output
+ - (Addition) addrows() shortcut for adding multiple rows
 
 0.03 [2007-05-25]
  - Formats are cached to improve performance in Excel

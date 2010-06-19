@@ -20,12 +20,11 @@ recommends          'DateTime'                => 0;
 requires            'Encode'                  => 0;
 recommends          'HTML::HTML5::Writer'     => 0;
 requires            'IO::File'                => 0;
+recommends          'JSON'                    => 0;
 recommends          'Spreadsheet::WriteExcel' => 0;
 test_requires       'Test::More'              => '0.61';
 requires            'Text::CSV'               => 0;
 recommends          'XML::LibXML'             => 0;
-
-# install_script 'fingerw';
 
 resources(
 	'homepage'   => "http://search.cpan.org/dist/$dist/",
